@@ -14,6 +14,14 @@ export DATABASE_URL="file:./dev.db"
 
 ```shell
 pal c
+yarn add -D create-nexus-type
+yarn add nexus-plugin-prisma
+```
+
+```shell
+yarn db:create
+yarn migration:save # сохраняем изменения prisma/schema.prisma
+yarn migration:up # применяем миграцию
 ```
 
 ## DB
