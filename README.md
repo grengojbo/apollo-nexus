@@ -16,6 +16,8 @@ export DATABASE_URL="file:./dev.db"
 pal c
 yarn add -D create-nexus-type
 yarn add nexus-plugin-prisma
+yarn add faker
+yarn add -D @types/faker
 ```
 
 ```shell
