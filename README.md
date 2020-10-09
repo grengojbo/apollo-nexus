@@ -1,3 +1,21 @@
+## Первоначальная установка
+
+```shell
+npm install -g @paljs/cli
+```
+
+установите системную переменную что бы небыло ошибки
+
+```shell
+export DATABASE_URL="file:./dev.db"
+```
+
+Если хотите установить из шаблона
+
+```shell
+pal c
+```
+
 ## DB
 
 We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider
