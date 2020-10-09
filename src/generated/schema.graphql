@@ -47,6 +47,17 @@ input BoolFilter {
   not: NestedBoolFilter
 }
 
+type Comment {
+  author: User
+  authorId: Int
+  contain: String!
+  createdAt: DateTime!
+  id: Int!
+  post: Post!
+  postId: Int!
+  updatedAt: DateTime!
+}
+
 type CommentAvgAggregateOutputType {
   authorId: Float
   id: Float!
@@ -260,6 +271,14 @@ input DateTimeFilter {
   notIn: [DateTime]
 }
 
+type Group {
+  createdAt: DateTime!
+  id: Int!
+  name: String!
+  updatedAt: DateTime!
+  users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
+}
+
 type GroupAvgAggregateOutputType {
   id: Float!
 }
@@ -386,6 +405,33 @@ input IntNullableFilter {
 """Json custom scalar type"""
 scalar Json
 
+type Mutation {
+  createOneComment(data: CommentCreateInput!): Comment!
+  createOneGroup(data: GroupCreateInput!): Group!
+  createOnePost(data: PostCreateInput!): Post!
+  createOneUser(data: UserCreateInput!): User!
+  deleteManyComment(where: CommentWhereInput): BatchPayload!
+  deleteManyGroup(where: GroupWhereInput): BatchPayload!
+  deleteManyPost(where: PostWhereInput): BatchPayload!
+  deleteManyUser(where: UserWhereInput): BatchPayload!
+  deleteOneComment(where: CommentWhereUniqueInput!): Comment
+  deleteOneGroup(where: GroupWhereUniqueInput!): Group
+  deleteOnePost(where: PostWhereUniqueInput!): Post
+  deleteOneUser(where: UserWhereUniqueInput!): User
+  updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
+  updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload!
+  updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateOneComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
+  updateOneGroup(data: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group
+  updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  upsertOneComment(create: CommentCreateInput!, update: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
+  upsertOneGroup(create: GroupCreateInput!, update: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
+  upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
 input NestedBoolFilter {
   equals: Boolean
   not: NestedBoolFilter
@@ -454,6 +500,17 @@ input NestedStringNullableFilter {
 
 input NullableStringFieldUpdateOperationsInput {
   set: String
+}
+
+type Post {
+  author: User
+  authorId: Int
+  comments(after: CommentWhereUniqueInput, before: CommentWhereUniqueInput, first: Int, last: Int): [Comment!]!
+  createdAt: DateTime!
+  id: Int!
+  published: Boolean!
+  title: String!
+  updatedAt: DateTime!
 }
 
 type PostAvgAggregateOutputType {
@@ -650,7 +707,14 @@ input PostWhereUniqueInput {
 }
 
 type Query {
-  ok: Boolean!
+  comment(where: CommentWhereUniqueInput!): Comment
+  comments(after: CommentWhereUniqueInput, before: CommentWhereUniqueInput, first: Int, last: Int, orderBy: [CommentOrderByInput!], where: CommentWhereInput): [Comment!]!
+  group(where: GroupWhereUniqueInput!): Group
+  groups(after: GroupWhereUniqueInput, before: GroupWhereUniqueInput, first: Int, last: Int, orderBy: [GroupOrderByInput!], where: GroupWhereInput): [Group!]!
+  post(where: PostWhereUniqueInput!): Post
+  posts(after: PostWhereUniqueInput, before: PostWhereUniqueInput, first: Int, last: Int, orderBy: [PostOrderByInput!], where: PostWhereInput): [Post!]!
+  user(where: UserWhereUniqueInput!): User
+  users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, orderBy: [UserOrderByInput!], where: UserWhereInput): [User!]!
 }
 
 enum SortOrder {
@@ -688,6 +752,18 @@ input StringNullableFilter {
   not: NestedStringNullableFilter
   notIn: [String]
   startsWith: String
+}
+
+type User {
+  comments(after: CommentWhereUniqueInput, before: CommentWhereUniqueInput, first: Int, last: Int): [Comment!]!
+  createdAt: DateTime!
+  email: String!
+  group: Group
+  groupId: Int
+  id: Int!
+  name: String
+  password: String!
+  posts(after: PostWhereUniqueInput, before: PostWhereUniqueInput, first: Int, last: Int): [Post!]!
 }
 
 type UserAvgAggregateOutputType {

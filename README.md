@@ -29,6 +29,14 @@ yarn generate:types # генерируем типы
 yarn generate:schema # генерируем типы для GraphQL
 ```
 
+```shell
+# pal g
+yarn generate
+yarn dev
+```
+
+/.well-known/apollo/server-health
+
 ## DB
 
 We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider
@@ -44,11 +52,6 @@ this commands will save your schema into db
 
 now run
 
-```shell
-pal g
-yarn generate
-yarn dev
-```
 
 - build prisma client
 - build crud system

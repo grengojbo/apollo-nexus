@@ -1,4 +1,7 @@
-export * from './User';
-export * from './Post';
-export * from './Comment';
-export * from './Group';
+export * from './User'
+export * from './Post'
+export * from './Comment'
+export * from './Group'
+
+/// Testing type
+export const testType = {}

@@ -1,5 +1,5 @@
 import { makeSchema } from '@nexus/schema'
-import * as types from './graphql'
+import * as types from './types'
 import { paljs } from '@paljs/nexus'
 import * as path from 'path'
 import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
