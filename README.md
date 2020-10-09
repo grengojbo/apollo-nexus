@@ -25,7 +25,8 @@ yarn migration:up # применяем миграцию
 ```
 
 ```shell
-yarn generate:types # генерируем типы для GraphQL
+yarn generate:types # генерируем типы
+yarn generate:schema # генерируем типы для GraphQL
 ```
 
 ## DB
