@@ -1,13 +1,16 @@
-import fastify from 'fastify'
+import fastify, { FastifyRequest, FastifyReply } from 'fastify'
 
 import { ApolloServer } from 'apollo-server-fastify'
 import { schema } from './nexusSchema'
-import { createContext } from './context'
+import { createContext, ContextApolo } from './context'
 import { config } from './config'
 import { default as favicon } from 'fastify-favicon'
 import { default as healthcheck } from 'fastify-healthcheck'
 import { default as metricsPlugin } from 'fastify-metrics'
 import { default as LP } from 'fastify-language-parser'
+
+// const Reply = require('fastify/lib/reply')
+// const Request = require('fastify/lib/request')
 
 const app = fastify({
   logger: {
@@ -18,13 +21,42 @@ const app = fastify({
 
 const server = new ApolloServer({
   schema,
-  // context: ({ req }) => {
-  //   console.log(req)
-  //   return req
+  // context: (...args) => {
+  //   console.log(`There are ${args.length} args being passed into context`)
+
+  //   args.forEach((arg, index) => {
+  //     const argName = `Arg #${index + 1}`
+
+  //     if (arg instanceof Reply) {
+  //       console.log(`${argName} is a Fastify Reply`)
+  //     }
+  //     if (arg instanceof Request) {
+  //       console.log(`${argName} is a Fastify Request`)
+  //     } else {
+  //       console.log(`${argName}: ${arg}`)
+  //     }
+  //   })
+  //   return {}
   // },
+
+  // context: async (ctx: any, reply: FastifyReply) => {
+  //   const request: ContextApolo = ctx.request
+  //   request.log.warn(`--------> request <--------`)
+  //   console.log(request.headers)
+  //   // console.log(request.metrics)
+  //   // console.log(request.detectedLng)
+  //   // console.log(request.context)
+  //   // return {
+  //   //   request,
+  //   //   reply, // res: reply,
+  //   //   app: fastify,
+  //   // };
+  //   // reply.log.warn(`--------> reply <--------`)
+  //   // reply.log.warn(reply)
+  // },
+  context: createContext,
   tracing: true,
   debug: true,
-  context: createContext,
 })
 
 app.register(LP, { order: ['header', 'query'] })
@@ -40,7 +72,7 @@ if (config.isMetrics) {
 app.register(healthcheck, { exposeUptime: config.showUptime })
 
 app.get('/ping', async (request, reply) => {
-  app.log.info(`ping from IP: ${request.ip}`)
+  app.log.info(`ping from IP: ${request.id}`)
   // request.log.info(`ping from IP: ${request.ip}`)
   // @ts-expect-error
   app.log.info(`lang: ${request.detectedLng[0].code}`)
