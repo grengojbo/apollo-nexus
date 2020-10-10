@@ -9,7 +9,7 @@
 		"start": "node dist/server",
 		"clean": "rm -rf dist",
 		"build": "npm -s run clean && npm -s run generate && tsc",
-		"generate": "yarn -s generate:types && yarn -s generate:schema && yarn -s generate:prisma && npm -s generate:nexus",
+		"generate": "yarn -s generate:types && yarn -s generate:schema && yarn -s generate:prisma && yarn -s generate:nexus",
 		"generate:types": "create-types",
 		"generate:schema": "cnt --mq -f -o",
 		"generate:prisma": "prisma generate",

@@ -762,6 +762,7 @@ type User {
   group: Group
   groupId: Int
   id: Int!
+  language: String!
   name: String
   password: String!
   posts(after: PostWhereUniqueInput, before: PostWhereUniqueInput, first: Int, last: Int): [Post!]!
@@ -778,6 +779,7 @@ input UserCreateInput {
   email: String!
   enabled: Boolean
   group: GroupCreateOneWithoutUsersInput
+  language: String
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
@@ -803,6 +805,7 @@ input UserCreateWithoutCommentsInput {
   email: String!
   enabled: Boolean
   group: GroupCreateOneWithoutUsersInput
+  language: String
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
@@ -813,6 +816,7 @@ input UserCreateWithoutGroupInput {
   createdAt: DateTime
   email: String!
   enabled: Boolean
+  language: String
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
@@ -824,6 +828,7 @@ input UserCreateWithoutPostsInput {
   email: String!
   enabled: Boolean
   group: GroupCreateOneWithoutUsersInput
+  language: String
   name: String
   password: String!
 }
@@ -834,6 +839,7 @@ enum UserDistinctFieldEnum {
   enabled
   groupId
   id
+  language
   name
   password
 }
@@ -860,6 +866,7 @@ input UserOrderByInput {
   enabled: SortOrder
   groupId: SortOrder
   id: SortOrder
+  language: SortOrder
   name: SortOrder
   password: SortOrder
 }
@@ -876,6 +883,7 @@ input UserScalarWhereInput {
   enabled: BoolFilter
   groupId: IntNullableFilter
   id: IntFilter
+  language: StringFilter
   name: StringNullableFilter
   NOT: [UserScalarWhereInput]
   OR: [UserScalarWhereInput]
@@ -893,6 +901,7 @@ input UserUpdateInput {
   email: StringFieldUpdateOperationsInput
   enabled: BoolFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
+  language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
@@ -902,6 +911,7 @@ input UserUpdateManyDataInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   enabled: BoolFieldUpdateOperationsInput
+  language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
 }
@@ -910,6 +920,7 @@ input UserUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   enabled: BoolFieldUpdateOperationsInput
+  language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
 }
@@ -954,6 +965,7 @@ input UserUpdateWithoutCommentsDataInput {
   email: StringFieldUpdateOperationsInput
   enabled: BoolFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
+  language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
@@ -964,6 +976,7 @@ input UserUpdateWithoutGroupDataInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   enabled: BoolFieldUpdateOperationsInput
+  language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
@@ -975,6 +988,7 @@ input UserUpdateWithoutPostsDataInput {
   email: StringFieldUpdateOperationsInput
   enabled: BoolFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
+  language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
 }
@@ -1009,6 +1023,7 @@ input UserWhereInput {
   group: GroupWhereInput
   groupId: IntNullableFilter
   id: IntFilter
+  language: StringFilter
   name: StringNullableFilter
   NOT: [UserWhereInput]
   OR: [UserWhereInput]

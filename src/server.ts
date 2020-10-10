@@ -1,13 +1,13 @@
-import fastify, { FastifyRequest, FastifyReply } from 'fastify'
+import fastify from 'fastify';
 
-import { ApolloServer } from 'apollo-server-fastify'
-import { schema } from './nexusSchema'
-import { createContext, ContextApolo } from './context'
-import { config } from './config'
-import { default as favicon } from 'fastify-favicon'
-import { default as healthcheck } from 'fastify-healthcheck'
-import { default as metricsPlugin } from 'fastify-metrics'
-import { default as LP } from 'fastify-language-parser'
+import { ApolloServer } from 'apollo-server-fastify';
+import { schema } from './nexusSchema';
+import { createContext } from './context';
+import { config } from './config';
+import { default as favicon } from 'fastify-favicon';
+import { default as healthcheck } from 'fastify-healthcheck';
+import { default as metricsPlugin } from 'fastify-metrics';
+import { default as LP } from 'fastify-language-parser';
 
 // const Reply = require('fastify/lib/reply')
 // const Request = require('fastify/lib/request')
@@ -17,12 +17,11 @@ const app = fastify({
     level: config.logLevel,
     prettyPrint: config.env === 'production' ? false : true,
   },
-})
+});
 
 const server = new ApolloServer({
   schema,
   tracing: true,
-  debug: true,
   context: createContext,
   // context: (...args) => {
   //   console.log(`There are ${args.length} args being passed into context`)
@@ -57,39 +56,40 @@ const server = new ApolloServer({
   //   // reply.log.warn(`--------> reply <--------`)
   //   // reply.log.warn(reply)
   // },
-})
+});
 
-app.register(LP, { order: ['header', 'query'] })
+void app.register(LP, { order: ['header', 'query'] });
 // app.register(LP, { order: ['cookie', 'header', 'path', 'query'] })
 
-app.register(favicon, { path: '/public' })
+void app.register(favicon, { path: '/public' });
 
 if (config.isMetrics) {
-  app.log.info('Enabled Prometheus metrics exporter...')
-  app.register(metricsPlugin, { endpoint: '/metrics' })
+  app.log.info('Enabled Prometheus metrics exporter...');
+  void app.register(metricsPlugin, { endpoint: '/metrics' });
 }
 
-app.register(healthcheck, { exposeUptime: config.showUptime })
+void app.register(healthcheck, { exposeUptime: config.showUptime });
 
-app.get('/ping', async (request, reply) => {
-  app.log.info(`ping from IP: ${request.id}`)
+// app.get('/ping', async (request, reply) => {
+app.get('/ping', async (request) => {
+  app.log.info(`ping from IP: ${request.id}`);
   // request.log.info(`ping from IP: ${request.ip}`)
   // @ts-expect-error
-  app.log.trace(`lang: ${request.detectedLng[0].code}`)
+  app.log.trace(`lang: ${request.detectedLng[0]?.code}`);
   // request.log.debug(request)
-  return 'pong\n'
-})
+  return 'pong\n';
+});
 
 const start = async () => {
   try {
-    app.register(server.createHandler())
+    void app.register(server.createHandler());
 
-    await app.listen({ port: config.port, host: '0.0.0.0' })
+    await app.listen({ port: config.port, host: '0.0.0.0' });
     // console.log(`LOG_LEVEL: ${config.logLevel}`)
     // app.log.info(`Server listening at ${app.server.address()}`)
   } catch (err) {
-    app.log.error(err)
-    process.exit(1)
+    app.log.error(err);
+    process.exit(1);
   }
   //   app.listen({ port: config.port, host: '0.0.0.0' }, (err, address) => {
   //   if (err) {
@@ -98,11 +98,11 @@ const start = async () => {
   //   }
   //   console.log(`Server listening at ${address}`)
   // })
-}
+};
 // server.listen().then(({ url }) => {
 //   console.log(`🚀  Server ready at ${url}`)
 // })
 
 if (require.main === module) {
-  start()
+  void start();
 }

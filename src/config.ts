@@ -1,19 +1,19 @@
-import dotenv from 'dotenv'
-import yn from 'yn'
+import dotenv from 'dotenv';
+import yn from 'yn';
 
-dotenv.config({ path: '.env' })
+dotenv.config({ path: '.env' });
 
 export interface Config {
-  env: string
-  port: number
-  isMetrics: boolean
-  showUptime: boolean
-  debugLogging: boolean
-  dbsslconn: boolean
-  jwtSecret: string
-  databaseUrl: string
-  dbEntitiesPath: string[]
-  logLevel: string
+  env: string;
+  port: number;
+  isMetrics: boolean;
+  showUptime: boolean;
+  debugLogging: boolean;
+  dbsslconn: boolean;
+  jwtSecret: string;
+  databaseUrl: string;
+  dbEntitiesPath: string[];
+  logLevel: string;
 }
 
 export const logLevels: Array<string> = [
@@ -22,9 +22,9 @@ export const logLevels: Array<string> = [
   'warn',
   'error',
   'trace',
-]
+];
 
-const isDevMode = process.env.NODE_ENV == 'development'
+const isDevMode = process.env.NODE_ENV == 'development';
 
 const config: Config = {
   env: process.env.NODE_ENV || 'development',
@@ -44,6 +44,6 @@ const config: Config = {
   dbEntitiesPath: [
     ...(isDevMode ? ['src/entity/**/*.ts'] : ['dist/entity/**/*.js']),
   ],
-}
+};
 
-export { config }
+export { config };

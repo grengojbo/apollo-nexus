@@ -1,8 +1,8 @@
-import { makeSchema } from '@nexus/schema'
-import * as types from './types'
-import { paljs } from '@paljs/nexus'
-import * as path from 'path'
-import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
+import { makeSchema } from '@nexus/schema';
+import * as types from './types';
+import { paljs } from '@paljs/nexus';
+import * as path from 'path';
+import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema';
 
 export const schema = makeSchema({
   types,
@@ -29,4 +29,4 @@ export const schema = makeSchema({
     ],
     contextType: 'Context.Context',
   },
-})
+});

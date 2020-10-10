@@ -4,6 +4,7 @@ export interface User {
   email: string;
   name: string | null;
   password: string;
+  language: string;
   enabled: boolean;
   posts: Post[];
   group: Group | null;
