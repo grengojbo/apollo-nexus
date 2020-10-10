@@ -19,7 +19,7 @@
 		"migration:up": "prisma migrate up --experimental --auto-approve",
 		"migration:down": "prisma migrate down 1 --experimental",
 		"dev": "ts-node-dev --no-notify --respawn --transpile-only src/server",
-		"data:inject": "ts-node prisma/fake-data.ts",
+		"seed": "ts-node prisma/seed.ts",
 		"style": "prettier --write 'src/**/*'"
 	},
 	"dependencies": {
@@ -27,11 +27,11 @@
 		"@paljs/nexus": "2.2.1",
 		"@prisma/client": "2.8.1",
 		"apollo-server": "2.18.2",
-		"faker": "^5.1.0",
 		"graphql": "15.3.0",
 		"nexus-plugin-prisma": "^0.21.0"
 	},
 	"devDependencies": {
+		"faker": "^5.1.0",
 		"@prisma/cli": "2.8.1",
 		"@types/faker": "^5.1.2",
 		"@types/node": "14.11.8",
