@@ -1,7 +1,13 @@
 .env
+.idea
 node_modules
 .idea
 yarn.lock
-dist
+deploy
+build
+coverage
+config/local.*
+**/*.xxx.js  
+dist/
 # src/generated
 prisma/dev.db

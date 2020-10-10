@@ -14,13 +14,16 @@ import { default as LP } from 'fastify-language-parser'
 
 const app = fastify({
   logger: {
-    level: 'warn',
-    prettyPrint: true,
+    level: config.logLevel,
+    prettyPrint: config.env === 'production' ? false : true,
   },
 })
 
 const server = new ApolloServer({
   schema,
+  tracing: true,
+  debug: true,
+  context: createContext,
   // context: (...args) => {
   //   console.log(`There are ${args.length} args being passed into context`)
 
@@ -54,9 +57,6 @@ const server = new ApolloServer({
   //   // reply.log.warn(`--------> reply <--------`)
   //   // reply.log.warn(reply)
   // },
-  context: createContext,
-  tracing: true,
-  debug: true,
 })
 
 app.register(LP, { order: ['header', 'query'] })
@@ -75,7 +75,7 @@ app.get('/ping', async (request, reply) => {
   app.log.info(`ping from IP: ${request.id}`)
   // request.log.info(`ping from IP: ${request.ip}`)
   // @ts-expect-error
-  app.log.info(`lang: ${request.detectedLng[0].code}`)
+  app.log.trace(`lang: ${request.detectedLng[0].code}`)
   // request.log.debug(request)
   return 'pong\n'
 })
@@ -85,6 +85,7 @@ const start = async () => {
     app.register(server.createHandler())
 
     await app.listen({ port: config.port, host: '0.0.0.0' })
+    // console.log(`LOG_LEVEL: ${config.logLevel}`)
     // app.log.info(`Server listening at ${app.server.address()}`)
   } catch (err) {
     app.log.error(err)
