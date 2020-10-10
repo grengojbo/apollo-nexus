@@ -1,3 +1,14 @@
+# Apollo Server 
+
+Установленные плагины:
+
+  - [Prometheus metrics exporter for Fastify](https://gitlab.com/m03geek/fastify-metrics)
+      если есть системная переменная **IS_METRICS** URL **/metrics**
+  - Fastify Plugin to serve responses for health checks](https://github.com/smartiniOnGitHub/fastify-healthcheck) 
+      проверка по URL **/health** если есть системная переменная **APP_UPTIME** время неприрывной работы
+  - [Fastify Plugin to serve default favicon](https://github.com/smartiniOnGitHub/fastify-favicon)
+  - [A Fastify plugin to parse request language](https://github.com/lependu/fastify-language-parser)
+
 ## Первоначальная установка
 
 ```shell

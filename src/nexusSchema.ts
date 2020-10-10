@@ -17,7 +17,7 @@ export const schema = makeSchema({
     // typegen: __dirname + '/generated/nexus.ts',
     typegen: path.join(
       __dirname,
-      '../node_modules/@types/nexus-typegen/index.d.ts',
+      '../node_modules/@types/nexus-typegen/index.d.ts'
     ),
   },
   typegenAutoConfig: {

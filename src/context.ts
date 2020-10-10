@@ -19,7 +19,9 @@ export interface Context {
   select: any
 }
 
-export function createContext(): Context {
+export function createContext(ctx?): Context {
+  console.log(`--------> createContext <--------`)
+  console.log(ctx.request)
   return {
     prisma,
     select: {},
