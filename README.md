@@ -37,9 +37,19 @@ yarn migration:save # сохраняем изменения prisma/schema.prisma
 yarn migration:up # применяем миграцию
 ```
 
+После изменеия в [prisma/schema.prisma](prisma/schema.prisma) необходимо запустить
+
+```shell
+yarn generate
+```
+
+это эквивалент следующих 4 комманд
+
 ```shell
 yarn generate:types # генерируем типы
 yarn generate:schema # генерируем типы для GraphQL
+yarn generate:prisma # генерируем клиента prisma
+yarn generate:nexus # генерируем schema.graphql
 ```
 
 ```shell

@@ -8,6 +8,7 @@ export const User = objectType({
     t.model.email();
     t.model.name();
     t.model.password();
+    t.model.enabled();
     t.model.posts();
     t.model.group();
     t.model.groupId();

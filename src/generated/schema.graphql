@@ -758,6 +758,7 @@ type User {
   comments(after: CommentWhereUniqueInput, before: CommentWhereUniqueInput, first: Int, last: Int): [Comment!]!
   createdAt: DateTime!
   email: String!
+  enabled: Boolean!
   group: Group
   groupId: Int
   id: Int!
@@ -775,6 +776,7 @@ input UserCreateInput {
   comments: CommentCreateManyWithoutAuthorInput
   createdAt: DateTime
   email: String!
+  enabled: Boolean
   group: GroupCreateOneWithoutUsersInput
   name: String
   password: String!
@@ -799,6 +801,7 @@ input UserCreateOneWithoutPostsInput {
 input UserCreateWithoutCommentsInput {
   createdAt: DateTime
   email: String!
+  enabled: Boolean
   group: GroupCreateOneWithoutUsersInput
   name: String
   password: String!
@@ -809,6 +812,7 @@ input UserCreateWithoutGroupInput {
   comments: CommentCreateManyWithoutAuthorInput
   createdAt: DateTime
   email: String!
+  enabled: Boolean
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
@@ -818,6 +822,7 @@ input UserCreateWithoutPostsInput {
   comments: CommentCreateManyWithoutAuthorInput
   createdAt: DateTime
   email: String!
+  enabled: Boolean
   group: GroupCreateOneWithoutUsersInput
   name: String
   password: String!
@@ -826,6 +831,7 @@ input UserCreateWithoutPostsInput {
 enum UserDistinctFieldEnum {
   createdAt
   email
+  enabled
   groupId
   id
   name
@@ -851,6 +857,7 @@ type UserMinAggregateOutputType {
 input UserOrderByInput {
   createdAt: SortOrder
   email: SortOrder
+  enabled: SortOrder
   groupId: SortOrder
   id: SortOrder
   name: SortOrder
@@ -866,6 +873,7 @@ input UserScalarWhereInput {
   AND: [UserScalarWhereInput]
   createdAt: DateTimeFilter
   email: StringFilter
+  enabled: BoolFilter
   groupId: IntNullableFilter
   id: IntFilter
   name: StringNullableFilter
@@ -883,6 +891,7 @@ input UserUpdateInput {
   comments: CommentUpdateManyWithoutAuthorInput
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  enabled: BoolFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
@@ -892,6 +901,7 @@ input UserUpdateInput {
 input UserUpdateManyDataInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  enabled: BoolFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
 }
@@ -899,6 +909,7 @@ input UserUpdateManyDataInput {
 input UserUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  enabled: BoolFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
 }
@@ -941,6 +952,7 @@ input UserUpdateOneWithoutPostsInput {
 input UserUpdateWithoutCommentsDataInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  enabled: BoolFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
@@ -951,6 +963,7 @@ input UserUpdateWithoutGroupDataInput {
   comments: CommentUpdateManyWithoutAuthorInput
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  enabled: BoolFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
@@ -960,6 +973,7 @@ input UserUpdateWithoutPostsDataInput {
   comments: CommentUpdateManyWithoutAuthorInput
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  enabled: BoolFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
@@ -991,6 +1005,7 @@ input UserWhereInput {
   comments: CommentListRelationFilter
   createdAt: DateTimeFilter
   email: StringFilter
+  enabled: BoolFilter
   group: GroupWhereInput
   groupId: IntNullableFilter
   id: IntFilter
