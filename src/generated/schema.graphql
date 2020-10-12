@@ -766,6 +766,7 @@ type User {
   name: String
   password: String!
   posts(after: PostWhereUniqueInput, before: PostWhereUniqueInput, first: Int, last: Int): [Post!]!
+  updatedAt: DateTime!
 }
 
 type UserAvgAggregateOutputType {
@@ -783,6 +784,7 @@ input UserCreateInput {
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  updatedAt: DateTime
 }
 
 input UserCreateManyWithoutGroupInput {
@@ -809,6 +811,7 @@ input UserCreateWithoutCommentsInput {
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  updatedAt: DateTime
 }
 
 input UserCreateWithoutGroupInput {
@@ -820,6 +823,7 @@ input UserCreateWithoutGroupInput {
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  updatedAt: DateTime
 }
 
 input UserCreateWithoutPostsInput {
@@ -831,6 +835,7 @@ input UserCreateWithoutPostsInput {
   language: String
   name: String
   password: String!
+  updatedAt: DateTime
 }
 
 enum UserDistinctFieldEnum {
@@ -842,6 +847,7 @@ enum UserDistinctFieldEnum {
   language
   name
   password
+  updatedAt
 }
 
 input UserListRelationFilter {
@@ -869,6 +875,7 @@ input UserOrderByInput {
   language: SortOrder
   name: SortOrder
   password: SortOrder
+  updatedAt: SortOrder
 }
 
 input UserRelationFilter {
@@ -888,6 +895,7 @@ input UserScalarWhereInput {
   NOT: [UserScalarWhereInput]
   OR: [UserScalarWhereInput]
   password: StringFilter
+  updatedAt: DateTimeFilter
 }
 
 type UserSumAggregateOutputType {
@@ -905,6 +913,7 @@ input UserUpdateInput {
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateManyDataInput {
@@ -914,6 +923,7 @@ input UserUpdateManyDataInput {
   language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateManyMutationInput {
@@ -923,6 +933,7 @@ input UserUpdateManyMutationInput {
   language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateManyWithoutGroupInput {
@@ -969,6 +980,7 @@ input UserUpdateWithoutCommentsDataInput {
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutGroupDataInput {
@@ -980,6 +992,7 @@ input UserUpdateWithoutGroupDataInput {
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutPostsDataInput {
@@ -991,6 +1004,7 @@ input UserUpdateWithoutPostsDataInput {
   language: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateWithWhereUniqueWithoutGroupInput {
@@ -1029,6 +1043,7 @@ input UserWhereInput {
   OR: [UserWhereInput]
   password: StringFilter
   posts: PostListRelationFilter
+  updatedAt: DateTimeFilter
 }
 
 input UserWhereUniqueInput {
