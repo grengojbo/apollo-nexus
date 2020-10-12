@@ -20,7 +20,8 @@
 		"migration:down": "prisma migrate down 1 --experimental",
 		"dev": "ts-node-dev --no-notify --respawn --transpile-only src/server",
 		"seed": "ts-node prisma/seed.ts",
-		"style": "prettier --write 'src/**/*'"
+		"style": "prettier --write 'src/**/*'",
+		"lint": "eslint ."
 	},
 	"dependencies": {
 		"@nexus/schema": "0.16.0",
